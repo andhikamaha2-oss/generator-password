@@ -1,0 +1,2144 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101827">
+
+<title>Starter 5 AI Marketing Generators</title>
+<meta name="description" content="Lima alat bantu AI untuk analisa market, target market, penawaran, copywriting, dan konten sosial media.">
+
+<style>
+:root {
+  --bg: #0b1220;
+  --panel: #111c2e;
+  --panel2: #172438;
+  --input: #0d192a;
+  --border: #263750;
+  --text: #edf3fb;
+  --muted: #94a6bd;
+  --gold: #e8b64b;
+  --gold2: #f4cf78;
+  --green: #20a56b;
+  --red: #e35d6a;
+  --blue: #4e8de8;
+  --shadow: 0 12px 35px rgba(0,0,0,.18);
+}
+
+body.light {
+  --bg: #f1f4f8;
+  --panel: #ffffff;
+  --panel2: #f4f6fa;
+  --input: #ffffff;
+  --border: #dce3ec;
+  --text: #172337;
+  --muted: #64748b;
+  --gold: #b77b12;
+  --gold2: #94600a;
+  --shadow: 0 10px 30px rgba(20,40,70,.07);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+               "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  transition: background .2s, color .2s;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app {
+  max-width: 1600px;
+  margin: auto;
+  padding: 22px;
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 22px;
+  padding: 17px 21px;
+  border: 1px solid var(--border);
+  background: var(--panel);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.logo {
+  width: 45px;
+  height: 45px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: linear-gradient(135deg,#e8b64b,#a56c13);
+  color: #172033;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.brand-name {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -.4px;
+}
+
+.brand-sub {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.header-btn {
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 9px;
+  padding: 9px 12px;
+  font-size: 12px;
+}
+
+/* HERO */
+
+.hero {
+  padding: 27px;
+  border-radius: 17px;
+  margin-bottom: 22px;
+  background:
+    radial-gradient(circle at 90% 20%,rgba(232,182,75,.16),transparent 32%),
+    linear-gradient(115deg,#142b49,#172439 65%,#252338);
+  border: 1px solid #34465e;
+  color: white;
+}
+
+.hero-label {
+  color: #f0c96f;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(23px,3vw,34px);
+  line-height: 1.2;
+  margin: 9px 0;
+  letter-spacing: -.8px;
+}
+
+.hero p {
+  color: #c1cfe0;
+  max-width: 670px;
+  margin: 0;
+  font-size: 13px;
+}
+
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 19px;
+}
+
+.stat {
+  padding: 6px 11px;
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.06);
+  border-radius: 30px;
+  color: #e3eaf3;
+  font-size: 11px;
+}
+
+/* WORKSPACE */
+
+.workspace {
+  display: grid;
+  grid-template-columns: 225px minmax(300px,1fr) minmax(340px,1.05fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  min-width: 0;
+}
+
+.panel-head {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.panel-title {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+.panel-subtitle {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 3px;
+}
+
+.panel-body {
+  padding: 15px;
+}
+
+/* GENERATOR MENU */
+
+.menu-label {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin: 4px 0 11px;
+}
+
+.generator-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.generator-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 10px;
+  text-align: left;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transition: .2s;
+}
+
+.generator-btn:hover {
+  background: var(--panel2);
+}
+
+.generator-btn.active {
+  background: rgba(232,182,75,.10);
+  border-color: rgba(232,182,75,.48);
+}
+
+.generator-icon {
+  width: 33px;
+  height: 33px;
+  display: grid;
+  place-items: center;
+  background: var(--panel2);
+  border-radius: 9px;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.generator-btn.active .generator-icon {
+  background: #e8b64b;
+  color: #182235;
+}
+
+.generator-name {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.generator-desc {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.menu-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 17px 0;
+}
+
+.library-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  padding: 1px 6px;
+  border-radius: 20px;
+  background: var(--panel2);
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+.library-tools {
+  display: grid;
+  gap: 7px;
+}
+
+.small-btn {
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--panel2);
+  padding: 9px;
+  border-radius: 8px;
+  font-size: 11px;
+  text-align: left;
+}
+
+.small-btn:hover {
+  border-color: var(--gold);
+}
+
+/* FORM */
+
+.form-description {
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 17px;
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.field .hint {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+.field input,
+.field textarea,
+.field select {
+  display: block;
+  width: 100%;
+  background: var(--input);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  color: var(--text);
+  padding: 10px 11px;
+  outline: none;
+  font-size: 12px;
+  transition: border .2s;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(232,182,75,.09);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 75px;
+}
+
+.field select option {
+  background: var(--panel);
+  color: var(--text);
+}
+
+.required {
+  color: var(--gold);
+}
+
+.choice-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.choice {
+  border: 1px solid var(--border);
+  color: var(--muted);
+  background: var(--panel2);
+  border-radius: 30px;
+  padding: 7px 11px;
+  font-size: 10px;
+  transition: .2s;
+}
+
+.choice.selected {
+  color: var(--gold2);
+  border-color: var(--gold);
+  background: rgba(232,182,75,.10);
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 19px;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg,#edc46c,#d99b30);
+  color: #172033;
+  border: none;
+  border-radius: 9px;
+  padding: 11px 15px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.secondary-btn {
+  background: var(--panel2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 9px;
+  padding: 10px 13px;
+  font-size: 11px;
+}
+
+/* PREVIEW */
+
+.preview-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.preview-status {
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.preview-info {
+  background: var(--panel2);
+  border-radius: 9px;
+  padding: 10px;
+  color: var(--muted);
+  font-size: 10px;
+  margin-bottom: 12px;
+}
+
+.prompt-output {
+  width: 100%;
+  min-height: 440px;
+  background: var(--input);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 11px;
+  line-height: 1.75;
+  resize: vertical;
+  outline: none;
+  white-space: pre-wrap;
+}
+
+.preview-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 11px;
+}
+
+.copy-btn {
+  background: var(--green);
+  color: white;
+  border: none;
+  border-radius: 9px;
+  padding: 12px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.save-btn {
+  background: var(--panel2);
+  border: 1px solid var(--gold);
+  color: var(--gold2);
+  border-radius: 9px;
+  padding: 12px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.preview-tip {
+  margin-top: 11px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+/* FAVORITES */
+
+.favorites-panel {
+  margin-top: 18px;
+}
+
+.favorite-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(190px,1fr));
+  gap: 10px;
+}
+
+.favorite-card {
+  padding: 12px;
+  border: 1px solid var(--border);
+  background: var(--panel2);
+  border-radius: 10px;
+  min-width: 0;
+}
+
+.favorite-card strong {
+  font-size: 11px;
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.favorite-card small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.favorite-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.favorite-actions button {
+  flex: 1;
+  padding: 6px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: var(--panel);
+  font-size: 10px;
+}
+
+.favorite-actions button.delete {
+  color: var(--red);
+}
+
+.empty-state {
+  color: var(--muted);
+  text-align: center;
+  padding: 25px 10px;
+  font-size: 11px;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+}
+
+/* FOOTER */
+
+.footer {
+  margin-top: 25px;
+  padding: 17px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.footer strong {
+  color: var(--gold);
+}
+
+/* TOAST */
+
+.toast {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translate(-50%,20px);
+  background: #1c9b69;
+  color: white;
+  padding: 11px 18px;
+  border-radius: 9px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: .25s;
+  z-index: 100;
+  box-shadow: var(--shadow);
+  max-width: 90%;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%,0);
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media(max-width:1050px) {
+  .workspace {
+    grid-template-columns: 210px 1fr;
+  }
+
+  .preview-panel {
+    grid-column: 1 / -1;
+  }
+
+  .prompt-output {
+    min-height: 350px;
+  }
+}
+
+@media(max-width:650px) {
+  .app {
+    padding: 11px;
+  }
+
+  .header {
+    padding: 12px;
+  }
+
+  .brand-name {
+    font-size: 14px;
+  }
+
+  .brand-sub {
+    font-size: 9px;
+  }
+
+  .header-btn {
+    padding: 8px;
+    font-size: 10px;
+  }
+
+  .hero {
+    padding: 21px 17px;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-panel {
+    grid-column: auto;
+  }
+
+  .generator-list {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  .generator-btn {
+    padding: 8px;
+  }
+
+  .generator-name {
+    font-size: 10px;
+  }
+
+  .panel-body {
+    padding: 13px;
+  }
+
+  .prompt-output {
+    min-height: 350px;
+  }
+}
+
+@media(max-width:380px) {
+  .generator-list {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-actions {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="brand">
+      <div class="logo">P</div>
+      <div>
+        <div class="brand-name">STARTER AI WORKSPACE</div>
+        <div class="brand-sub">5 AI Marketing Generators</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="header-btn" id="themeToggle">
+        ☀ / ☾ Tema
+      </button>
+      <button class="header-btn" id="resetAll">
+        ↻ Reset
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-label">YOUR AI MARKETING ASSISTANT</div>
+    <h1>Kerjakan Lebih Cepat.<br>Strategi Lebih Terarah.</h1>
+    <p>
+      Lima alat bantu AI praktis untuk membantu Anda memahami pasar,
+      menentukan pelanggan, membuat penawaran, menyusun copywriting,
+      dan mengembangkan konten media sosial.
+    </p>
+
+    <div class="hero-stats">
+      <span class="stat">✦ 5 Generator</span>
+      <span class="stat">✦ Live Prompt Preview</span>
+      <span class="stat">✦ Simpan Favorit</span>
+      <span class="stat">✦ Ekspor & Impor</span>
+    </div>
+  </section>
+
+  <!-- MAIN WORKSPACE -->
+  <main class="workspace">
+
+    <!-- PANEL 1 -->
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title">01. PILIH GENERATOR</div>
+        <div class="panel-subtitle">Pilih pekerjaan yang ingin diselesaikan</div>
+      </div>
+
+      <div class="panel-body">
+
+        <div class="menu-label">AI MARKETING TOOLS</div>
+
+        <div class="generator-list" id="generatorList"></div>
+
+        <div class="menu-divider"></div>
+
+        <div class="menu-label">
+          PUSTAKA FAVORIT
+          <span class="library-count" id="favoriteCount">0</span>
+        </div>
+
+        <div class="library-tools">
+          <button class="small-btn" id="exportBtn">
+            ↓ Ekspor koleksi JSON
+          </button>
+
+          <button class="small-btn" id="importBtn">
+            ↑ Impor koleksi JSON
+          </button>
+
+          <input type="file" id="importFile"
+                 accept=".json,application/json"
+                 class="hidden">
+        </div>
+
+        <div class="menu-divider"></div>
+
+        <div class="panel-subtitle">
+          Tips: Simpan prompt yang sering digunakan agar bisa dibuka kembali kapan saja.
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PANEL 2 -->
+    <section class="panel">
+      <div class="panel-head">
+        <div class="panel-title">02. ISI DETAIL KEBUTUHAN</div>
+        <div class="panel-subtitle">Lengkapi informasi bisnis Anda</div>
+      </div>
+
+      <div class="panel-body">
+        <div id="formTitle" class="panel-title"></div>
+        <div id="formDescription" class="form-description"></div>
+
+        <div id="dynamicForm"></div>
+
+        <div class="form-actions">
+          <button class="primary-btn" id="generateBtn">
+            ✦ Buat Prompt
+          </button>
+
+          <button class="secondary-btn" id="clearForm">
+            Hapus Isian
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PANEL 3 -->
+    <section class="panel preview-panel">
+      <div class="panel-head">
+        <div class="panel-title">03. PRATINJAU PROMPT FINAL</div>
+        <div class="panel-subtitle">Instruksi AI yang siap digunakan</div>
+      </div>
+
+      <div class="panel-body">
+
+        <div class="preview-top">
+          <strong id="previewName" style="font-size:12px">
+            Prompt Generator
+          </strong>
+
+          <span class="preview-status" id="previewStatus">
+            ● LIVE PREVIEW
+          </span>
+        </div>
+
+        <div class="preview-info">
+          Prompt akan terbentuk otomatis ketika Anda mengisi formulir.
+          Anda juga bisa mengedit hasil prompt secara manual.
+        </div>
+
+        <textarea id="promptOutput" class="prompt-output"
+          spellcheck="false"
+          placeholder="Prompt Anda akan muncul di sini..."></textarea>
+
+        <div class="preview-actions">
+          <button class="copy-btn" id="copyBtn">
+            ▣ SALIN PROMPT
+          </button>
+
+          <button class="save-btn" id="saveBtn">
+            ♡ SIMPAN FAVORIT
+          </button>
+        </div>
+
+        <div class="preview-tip">
+          Cara menggunakan: Salin prompt, buka ChatGPT, Gemini,
+          atau Claude, kemudian tempelkan instruksi tersebut.
+          Lanjutkan percakapan sesuai kebutuhan Anda.
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FAVORITES -->
+  <section class="panel favorites-panel">
+    <div class="panel-head">
+      <div class="panel-title">
+        ♡ PUSTAKA PROMPT SAYA
+      </div>
+      <div class="panel-subtitle">
+        Prompt favorit tersimpan di browser Anda.
+        Anda dapat membuka, menghapus, mengekspor, atau mengimpornya.
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <div id="favoriteList" class="favorite-list"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <strong>LENTERA DIGITAL</strong><br>
+    AI Marketing Workspace · Starter Edition<br>
+    © 2026 Lentera Digital
+  </footer>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================
+   1. DATABASE GENERATOR
+========================================= */
+
+const generators = {
+
+  market: {
+    name: "Analisa Market",
+    icon: "📊",
+    description: "Pahami pasar, kebutuhan konsumen, dan peluang bisnis.",
+    role: "Analis Riset Pasar dan Strategi Bisnis Senior",
+    objective: "Melakukan analisis pasar secara sistematis untuk menemukan peluang bisnis yang realistis dan dapat ditindaklanjuti.",
+    fields: [
+      {
+        id:"business",
+        label:"Nama bisnis / produk",
+        placeholder:"Contoh: Kopi Langit",
+        required:true
+      },
+      {
+        id:"industry",
+        label:"Industri / kategori bisnis",
+        placeholder:"Contoh: Minuman kopi kekinian",
+        required:true
+      },
+      {
+        id:"product",
+        label:"Deskripsi produk atau layanan",
+        placeholder:"Jelaskan produk, manfaat, dan keunggulannya",
+        type:"textarea"
+      },
+      {
+        id:"location",
+        label:"Wilayah pasar",
+        placeholder:"Contoh: Surabaya dan sekitarnya"
+      },
+      {
+        id:"problem",
+        label:"Masalah yang ingin diteliti",
+        placeholder:"Contoh: Apakah pasar masih memiliki peluang?"
+      },
+      {
+        id:"competitors",
+        label:"Informasi pesaing (opsional)",
+        placeholder:"Nama pesaing atau karakteristik pesaing",
+        type:"textarea"
+      },
+      {
+        id:"price",
+        label:"Kisaran harga produk",
+        placeholder:"Contoh: Rp15.000–Rp30.000"
+      },
+      {
+        id:"extra",
+        label:"Informasi tambahan",
+        placeholder:"Informasi lain yang perlu diperhatikan",
+        type:"textarea"
+      }
+    ],
+    output:[
+      "Ringkasan eksekutif.",
+      "Gambaran dan karakteristik pasar.",
+      "Kebutuhan serta masalah konsumen.",
+      "Tren dan faktor yang memengaruhi pasar.",
+      "Segmentasi peluang pasar.",
+      "Peluang dan tantangan bisnis.",
+      "Analisis SWOT yang relevan.",
+      "Rekomendasi strategi dan langkah prioritas."
+    ],
+    constraints:[
+      "Jangan mengarang data pasar, angka, tren, atau statistik.",
+      "Bedakan fakta yang tersedia, asumsi, dan hipotesis.",
+      "Jika informasi tidak tersedia, jelaskan keterbatasannya.",
+      "Jangan menyimpulkan ukuran pasar secara pasti tanpa data pendukung.",
+      "Utamakan rekomendasi yang realistis untuk bisnis kecil dan UMKM."
+    ]
+  },
+
+  target: {
+    name:"Target Market",
+    icon:"🎯",
+    description:"Temukan calon pelanggan yang paling potensial.",
+    role:"Strategi Segmentasi Pasar dan Customer Persona",
+    objective:"Mengidentifikasi target pelanggan yang paling relevan, memiliki kebutuhan nyata, dan berpotensi membeli produk atau layanan.",
+    fields:[
+      {
+        id:"business",
+        label:"Nama bisnis / produk",
+        placeholder:"Contoh: Paket katering harian",
+        required:true
+      },
+      {
+        id:"product",
+        label:"Deskripsi produk / layanan",
+        placeholder:"Apa yang dijual dan apa manfaatnya?",
+        type:"textarea",
+        required:true
+      },
+      {
+        id:"benefit",
+        label:"Manfaat atau keunggulan utama",
+        placeholder:"Contoh: Hemat waktu, praktis, harga terjangkau",
+        type:"textarea"
+      },
+      {
+        id:"location",
+        label:"Wilayah pemasaran",
+        placeholder:"Contoh: Surabaya"
+      },
+      {
+        id:"price",
+        label:"Harga produk / layanan",
+        placeholder:"Contoh: Rp35.000 per paket"
+      },
+      {
+        id:"existing",
+        label:"Pelanggan yang pernah membeli (jika ada)",
+        placeholder:"Contoh: Karyawan kantor dan mahasiswa"
+      },
+      {
+        id:"goal",
+        label:"Tujuan menentukan target market",
+        placeholder:"Contoh: Meningkatkan penjualan dan mendapatkan pelanggan baru",
+        type:"textarea"
+      }
+    ],
+    output:[
+      "Segmentasi demografis.",
+      "Segmentasi geografis.",
+      "Segmentasi psikografis.",
+      "Segmentasi perilaku pembelian.",
+      "Tiga kandidat target market potensial.",
+      "Prioritas target market beserta alasannya.",
+      "Customer persona terperinci.",
+      "Masalah, kebutuhan, dan motivasi membeli.",
+      "Keberatan yang mungkin muncul sebelum membeli.",
+      "Pesan pemasaran yang sesuai untuk setiap target.",
+      "Rekomendasi saluran pemasaran."
+    ],
+    constraints:[
+      "Jangan menganggap semua orang sebagai target market.",
+      "Jangan membuat persona seolah-olah merupakan pelanggan nyata.",
+      "Bedakan data pelanggan yang diberikan dengan asumsi.",
+      "Jelaskan alasan pemilihan target market.",
+      "Utamakan target yang realistis dan dapat dijangkau."
+    ]
+  },
+
+  offer: {
+    name:"Penawaran",
+    icon:"💎",
+    description:"Bangun penawaran yang menarik dan bernilai.",
+    role:"Strategi Penawaran dan Value Proposition Specialist",
+    objective:"Menyusun penawaran produk atau jasa yang relevan dengan kebutuhan target pelanggan, memiliki nilai jelas, dan meningkatkan daya tarik pembelian.",
+    fields:[
+      {
+        id:"business",
+        label:"Nama bisnis / produk",
+        placeholder:"Contoh: Jasa pembuatan website",
+        required:true
+      },
+      {
+        id:"product",
+        label:"Deskripsi produk / layanan",
+        placeholder:"Jelaskan apa yang Anda jual",
+        type:"textarea",
+        required:true
+      },
+      {
+        id:"target",
+        label:"Target pelanggan",
+        placeholder:"Contoh: UMKM yang belum memiliki website",
+        required:true
+      },
+      {
+        id:"problem",
+        label:"Masalah pelanggan",
+        placeholder:"Contoh: Sulit mendapatkan pelanggan dari internet",
+        type:"textarea"
+      },
+      {
+        id:"benefit",
+        label:"Manfaat dan keunggulan",
+        placeholder:"Apa yang membuat produk Anda bermanfaat?",
+        type:"textarea"
+      },
+      {
+        id:"price",
+        label:"Harga produk / layanan",
+        placeholder:"Contoh: Rp750.000"
+      },
+      {
+        id:"bonus",
+        label:"Bonus yang tersedia",
+        placeholder:"Contoh: Gratis domain atau konsultasi"
+      },
+      {
+        id:"guarantee",
+        label:"Garansi / jaminan (jika ada)",
+        placeholder:"Jelaskan garansi yang benar-benar tersedia"
+      },
+      {
+        id:"extra",
+        label:"Batasan atau ketentuan penawaran",
+        placeholder:"Contoh: Berlaku untuk 10 pembeli pertama"
+      }
+    ],
+    output:[
+      "Analisis singkat kebutuhan pelanggan.",
+      "Value proposition utama.",
+      "Konsep penawaran utama.",
+      "Nama paket atau penawaran.",
+      "Rincian manfaat dan nilai produk.",
+      "Strategi bonus yang relevan.",
+      "Penjelasan harga dan persepsi nilai.",
+      "Pembeda dari alternatif lain.",
+      "Penanganan keberatan calon pelanggan.",
+      "Contoh penawaran siap dipasarkan.",
+      "Rekomendasi CTA atau ajakan bertindak."
+    ],
+    constraints:[
+      "Jangan menciptakan bonus, garansi, atau fasilitas yang tidak diberikan.",
+      "Jangan menggunakan klaim berlebihan atau menyesatkan.",
+      "Jangan membuat diskon atau kelangkaan palsu.",
+      "Jangan mengasumsikan harga atau biaya yang tidak tersedia.",
+      "Fokus pada nilai dan manfaat bagi pelanggan, bukan hanya harga murah."
+    ]
+  },
+
+  copy: {
+    name:"Copywriting",
+    icon:"✍️",
+    description:"Buat pesan pemasaran yang menarik dan persuasif.",
+    role:"Senior Direct Response Copywriter dan Marketing Communication Specialist",
+    objective:"Mengubah informasi produk dan penawaran menjadi copywriting yang menarik perhatian, relevan dengan kebutuhan pelanggan, membangun kepercayaan, dan mendorong tindakan.",
+    fields:[
+      {
+        id:"business",
+        label:"Nama bisnis / produk",
+        placeholder:"Contoh: Kopi Langit",
+        required:true
+      },
+      {
+        id:"product",
+        label:"Deskripsi produk / layanan",
+        placeholder:"Jelaskan produk yang dipasarkan",
+        type:"textarea",
+        required:true
+      },
+      {
+        id:"target",
+        label:"Target pelanggan",
+        placeholder:"Contoh: Karyawan kantor usia 23–40 tahun",
+        required:true
+      },
+      {
+        id:"problem",
+        label:"Masalah atau kebutuhan pelanggan",
+        placeholder:"Apa masalah yang ingin diselesaikan?",
+        type:"textarea"
+      },
+      {
+        id:"benefit",
+        label:"Keunggulan dan manfaat produk",
+        placeholder:"Tuliskan manfaat utama",
+        type:"textarea"
+      },
+      {
+        id:"offer",
+        label:"Penawaran / harga",
+        placeholder:"Contoh: Paket hemat Rp50.000"
+      },
+      {
+        id:"platform",
+        label:"Media pemasaran",
+        type:"select",
+        options:[
+          "WhatsApp",
+          "Instagram",
+          "Facebook",
+          "TikTok",
+          "Website / Landing Page",
+          "Email Marketing",
+          "Marketplace",
+          "Umum / Multi-platform"
+        ]
+      },
+      {
+        id:"objective",
+        label:"Tujuan copywriting",
+        type:"select",
+        options:[
+          "Meningkatkan penjualan",
+          "Mendapatkan leads",
+          "Mengenalkan produk",
+          "Membangun kepercayaan",
+          "Mempromosikan penawaran",
+          "Mengajak orang menghubungi WhatsApp"
+        ]
+      },
+      {
+        id:"extra",
+        label:"Informasi tambahan",
+        placeholder:"Testimoni, bukti, ketentuan, atau CTA",
+        type:"textarea"
+      }
+    ],
+    output:[
+      "Analisis singkat target pembaca.",
+      "Big idea atau pesan utama.",
+      "Lima alternatif headline.",
+      "Tiga alternatif subheadline.",
+      "Copywriting utama sesuai platform.",
+      "Penggunaan problem, benefit, dan solusi.",
+      "Penguatan kepercayaan berdasarkan bukti yang tersedia.",
+      "Penanganan keberatan pelanggan.",
+      "Call to Action yang jelas.",
+      "Versi copywriting pendek dan panjang."
+    ],
+    constraints:[
+      "Gunakan bahasa yang natural dan mudah dipahami.",
+      "Hindari klaim palsu, testimoni fiktif, dan janji berlebihan.",
+      "Jangan menciptakan bukti sosial yang tidak diberikan.",
+      "Sesuaikan panjang tulisan dengan platform.",
+      "Jangan terlalu agresif atau memaksa pembaca.",
+      "Fokus pada manfaat dan kebutuhan target pelanggan."
+    ]
+  },
+
+  social: {
+    name:"Konten Sosmed",
+    icon:"📱",
+    description:"Rancang ide dan kalender konten media sosial.",
+    role:"Social Media Strategist dan Content Marketing Specialist",
+    objective:"Mengembangkan strategi dan ide konten media sosial yang relevan dengan target audiens, mendukung tujuan pemasaran, dan dapat dieksekusi secara konsisten.",
+    fields:[
+      {
+        id:"business",
+        label:"Nama bisnis / brand",
+        placeholder:"Contoh: Lela's Kitchen",
+        required:true
+      },
+      {
+        id:"product",
+        label:"Produk / layanan",
+        placeholder:"Jelaskan produk atau jasa yang dipasarkan",
+        type:"textarea",
+        required:true
+      },
+      {
+        id:"target",
+        label:"Target audiens",
+        placeholder:"Contoh: Karyawan kantor dan keluarga",
+        required:true
+      },
+      {
+        id:"platform",
+        label:"Platform media sosial",
+        type:"select",
+        options:[
+          "Instagram",
+          "Facebook",
+          "TikTok",
+          "Instagram dan Facebook",
+          "TikTok dan Instagram",
+          "Multi-platform"
+        ]
+      },
+      {
+        id:"goal",
+        label:"Tujuan konten",
+        type:"select",
+        options:[
+          "Meningkatkan brand awareness",
+          "Meningkatkan engagement",
+          "Mendapatkan leads",
+          "Meningkatkan penjualan",
+          "Membangun kepercayaan",
+          "Mengedukasi audiens"
+        ]
+      },
+      {
+        id:"frequency",
+        label:"Jumlah konten yang dibutuhkan",
+        type:"select",
+        options:[
+          "7 ide konten",
+          "14 ide konten",
+          "30 ide konten",
+          "Kalender konten 30 hari"
+        ]
+      },
+      {
+        id:"tone",
+        label:"Karakter komunikasi brand",
+        placeholder:"Contoh: Ramah, profesional, humoris"
+      },
+      {
+        id:"material",
+        label:"Bahan konten yang tersedia",
+        placeholder:"Contoh: Foto produk, video, testimoni, proses produksi",
+        type:"textarea"
+      },
+      {
+        id:"extra",
+        label:"Informasi tambahan",
+        placeholder:"Promo, event, tema khusus, atau ketentuan",
+        type:"textarea"
+      }
+    ],
+    output:[
+      "Analisis singkat audiens dan tujuan konten.",
+      "Pilar konten yang direkomendasikan.",
+      "Ide konten sesuai jumlah yang dipilih.",
+      "Tema dan sudut pandang setiap konten.",
+      "Hook atau kalimat pembuka.",
+      "Caption atau naskah konten.",
+      "CTA yang sesuai.",
+      "Rekomendasi format konten.",
+      "Saran visual atau konsep desain.",
+      "Jadwal publikasi yang disarankan.",
+      "Ide evaluasi performa konten."
+    ],
+    constraints:[
+      "Sesuaikan ide konten dengan karakter platform.",
+      "Jangan membuat klaim atau informasi produk yang tidak tersedia.",
+      "Hindari ide yang sama berulang kali.",
+      "Seimbangkan konten edukasi, interaksi, branding, dan promosi.",
+      "Buat ide yang realistis untuk dikerjakan oleh UMKM.",
+      "Jangan menjanjikan viral atau hasil penjualan tertentu."
+    ]
+  }
+};
+
+
+/* =========================================
+   2. KONFIGURASI UMUM
+========================================= */
+
+const STORAGE_KEY = "lentera_starter_favorites_v1";
+const THEME_KEY = "lentera_starter_theme_v1";
+
+let activeGenerator = "market";
+let formData = {};
+let selectedTone = "Profesional";
+let selectedFormat = "Terstruktur dengan heading dan poin";
+let favorites = loadFavorites();
+
+const tones = [
+  "Profesional",
+  "Persuasif",
+  "Ramah & Santai",
+  "Edukasi",
+  "Tegas & Instruktif"
+];
+
+const formats = [
+  "Terstruktur dengan heading dan poin",
+  "Tabel Markdown",
+  "Poin-poin ringkas",
+  "Laporan mendalam",
+  "Langkah kerja praktis"
+];
+
+
+/* =========================================
+   3. HELPER
+========================================= */
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  })[char]);
+}
+
+function loadFavorites() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    const parsed = saved ? JSON.parse(saved) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch(e) {
+    return [];
+  }
+}
+
+function saveFavoritesStorage() {
+  try {
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(favorites));
+  } catch(e) {
+    showToast("Penyimpanan browser penuh atau tidak tersedia.");
+  }
+}
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  },2500);
+}
+
+function getValue(id) {
+  const element = document.getElementById("field_"+id);
+  return element ? element.value.trim() : "";
+}
+
+function getAllValues() {
+  const values = {};
+
+  const generator = generators[activeGenerator];
+
+  generator.fields.forEach(field => {
+    values[field.id] = getValue(field.id);
+  });
+
+  return values;
+}
+
+
+/* =========================================
+   4. RENDER MENU
+========================================= */
+
+function renderMenu() {
+  const container = document.getElementById("generatorList");
+
+  container.innerHTML = Object.entries(generators).map(([key,item]) => `
+    <button class="generator-btn ${key === activeGenerator ? "active":""}"
+      data-generator="${key}">
+      <span class="generator-icon">${item.icon}</span>
+      <span>
+        <span class="generator-name">${item.name}</span><br>
+        <span class="generator-desc">${item.description}</span>
+      </span>
+    </button>
+  `).join("");
+
+  container.querySelectorAll("[data-generator]").forEach(button => {
+    button.addEventListener("click",() => {
+      activeGenerator = button.dataset.generator;
+      formData = {};
+      selectedTone = "Profesional";
+      selectedFormat = "Terstruktur dengan heading dan poin";
+
+      renderMenu();
+      renderForm();
+      updatePrompt();
+    });
+  });
+}
+
+
+/* =========================================
+   5. RENDER FORM DINAMIS
+========================================= */
+
+function renderForm() {
+  const generator = generators[activeGenerator];
+
+  document.getElementById("formTitle").textContent = generator.name;
+  document.getElementById("formDescription").textContent = generator.description;
+
+  const container = document.getElementById("dynamicForm");
+
+  let html = "";
+
+  generator.fields.forEach(field => {
+    const required = field.required
+      ? '<span class="required">*</span>'
+      : "";
+
+    html += `<div class="field">
+      <label for="field_${field.id}">
+        ${escapeHTML(field.label)} ${required}
+      </label>`;
+
+    if(field.type === "textarea") {
+      html += `
+        <textarea
+          id="field_${field.id}"
+          placeholder="${escapeHTML(field.placeholder || "")}"
+          rows="3"
+        ></textarea>
+      `;
+    }
+    else if(field.type === "select") {
+      html += `
+        <select id="field_${field.id}">
+          ${field.options.map(option => `
+            <option value="${escapeHTML(option)}">
+              ${escapeHTML(option)}
+            </option>
+          `).join("")}
+        </select>
+      `;
+    }
+    else {
+      html += `
+        <input
+          type="text"
+          id="field_${field.id}"
+          placeholder="${escapeHTML(field.placeholder || "")}"
+        >
+      `;
+    }
+
+    html += `</div>`;
+  });
+
+  /* TONE OF VOICE */
+
+  html += `
+    <div class="field">
+      <label>Gaya Bahasa / Tone of Voice</label>
+      <div class="choice-group" id="toneChoices">
+        ${tones.map(tone => `
+          <button type="button"
+            class="choice ${tone === selectedTone ? "selected":""}"
+            data-tone="${escapeHTML(tone)}">
+            ${escapeHTML(tone)}
+          </button>
+        `).join("")}
+      </div>
+    </div>
+  `;
+
+  /* OUTPUT FORMAT */
+
+  html += `
+    <div class="field">
+      <label>Format Hasil</label>
+      <div class="choice-group" id="formatChoices">
+        ${formats.map(format => `
+          <button type="button"
+            class="choice ${format === selectedFormat ? "selected":""}"
+            data-format="${escapeHTML(format)}">
+            ${escapeHTML(format)}
+          </button>
+        `).join("")}
+      </div>
+    </div>
+  `;
+
+  html += `
+    <div class="field">
+      <label>Batasan tambahan (opsional)</label>
+      <textarea id="customConstraints" rows="3"
+        placeholder="Contoh: Hindari bahasa terlalu teknis, fokus pada UMKM, dan berikan rekomendasi sesuai anggaran kecil."></textarea>
+    </div>
+  `;
+
+  container.innerHTML = html;
+
+  container.querySelectorAll("input,textarea,select").forEach(element => {
+    element.addEventListener("input",updatePrompt);
+    element.addEventListener("change",updatePrompt);
+  });
+
+  document.querySelectorAll("[data-tone]").forEach(button => {
+    button.addEventListener("click",() => {
+      selectedTone = button.dataset.tone;
+      updateChoiceStyles();
+      updatePrompt();
+    });
+  });
+
+  document.querySelectorAll("[data-format]").forEach(button => {
+    button.addEventListener("click",() => {
+      selectedFormat = button.dataset.format;
+      updateChoiceStyles();
+      updatePrompt();
+    });
+  });
+}
+
+function updateChoiceStyles() {
+  document.querySelectorAll("[data-tone]").forEach(button => {
+    button.classList.toggle(
+      "selected",
+      button.dataset.tone === selectedTone
+    );
+  });
+
+  document.querySelectorAll("[data-format]").forEach(button => {
+    button.classList.toggle(
+      "selected",
+      button.dataset.format === selectedFormat
+    );
+  });
+}
+
+
+/* =========================================
+   6. MEMBANGUN PROMPT PROFESIONAL
+========================================= */
+
+function buildPrompt() {
+  const generator = generators[activeGenerator];
+  const values = getAllValues();
+
+  const lines = [];
+
+  function section(title,content) {
+    lines.push("");
+    lines.push("## " + title);
+    lines.push(content);
+  }
+
+  lines.push("# INSTRUKSI KERJA AI");
+  lines.push("");
+  lines.push("## 1. PERAN");
+  lines.push(
+    "Anda adalah " + generator.role +
+    ". Bertindaklah sebagai profesional yang analitis, objektif, " +
+    "sistematis, dan berorientasi pada hasil."
+  );
+
+  section("2. TUJUAN",generator.objective);
+
+  lines.push("");
+  lines.push("## 3. KONTEKS DAN DATA BISNIS");
+
+  generator.fields.forEach(field => {
+    const value = values[field.id];
+
+    if(value) {
+      lines.push(field.label + ": " + value);
+    }
+  });
+
+  lines.push("");
+  lines.push("## 4. TUGAS YANG HARUS DIKERJAKAN");
+  lines.push(
+    "Berdasarkan informasi yang diberikan, lakukan pekerjaan berikut:"
+  );
+
+  lines.push("");
+
+  generator.output.forEach((item,index) => {
+    lines.push((index+1) + ". " + item);
+  });
+
+  lines.push("");
+  lines.push("## 5. METODE KERJA DAN STANDAR ANALISIS");
+  lines.push(
+    "- Analisis informasi secara logis dan bertahap."
+  );
+  lines.push(
+    "- Gunakan konteks bisnis yang diberikan sebagai dasar utama."
+  );
+  lines.push(
+    "- Jika data kurang lengkap, identifikasi informasi yang belum tersedia."
+  );
+  lines.push(
+    "- Pisahkan fakta, asumsi, hipotesis, dan rekomendasi."
+  );
+  lines.push(
+    "- Berikan alasan di balik setiap kesimpulan penting."
+  );
+  lines.push(
+    "- Hindari jawaban generik yang tidak relevan dengan konteks bisnis."
+  );
+  lines.push(
+    "- Utamakan rekomendasi yang dapat dilaksanakan."
+  );
+
+  lines.push("");
+  lines.push("## 6. BATASAN DAN KETENTUAN");
+
+  generator.constraints.forEach((item,index) => {
+    lines.push((index+1) + ". " + item);
+  });
+
+  const custom = document.getElementById("customConstraints")?.value.trim();
+
+  if(custom) {
+    lines.push("");
+    lines.push("Batasan tambahan dari pengguna:");
+    lines.push(custom);
+  }
+
+  lines.push("");
+  lines.push("## 7. GAYA BAHASA");
+  lines.push(
+    "Gunakan gaya bahasa: " + selectedTone + "."
+  );
+  lines.push(
+    "Gunakan bahasa Indonesia yang jelas, natural, " +
+    "mudah dipahami, dan tidak bertele-tele."
+  );
+
+  lines.push("");
+  lines.push("## 8. FORMAT OUTPUT");
+  lines.push(
+    "Susun hasil menggunakan format: " + selectedFormat + "."
+  );
+  lines.push(
+    "Gunakan judul dan subjudul yang jelas, struktur yang konsisten, " +
+    "serta penjelasan yang mudah dipahami."
+  );
+
+  lines.push("");
+  lines.push("## 9. KUALITAS HASIL");
+  lines.push(
+    "- Jangan berhenti pada penjelasan teoritis."
+  );
+  lines.push(
+    "- Berikan contoh yang relevan apabila diperlukan."
+  );
+  lines.push(
+    "- Pastikan setiap rekomendasi memiliki alasan yang jelas."
+  );
+  lines.push(
+    "- Jika terdapat beberapa alternatif, bandingkan kelebihan dan kekurangannya."
+  );
+  lines.push(
+    "- Prioritaskan tindakan berdasarkan dampak dan kemudahan pelaksanaan."
+  );
+
+  lines.push("");
+  lines.push("## 10. INSTRUKSI PENUTUP");
+  lines.push(
+    "Selesaikan tugas secara menyeluruh berdasarkan data yang tersedia. " +
+    "Jangan mengarang informasi untuk mengisi kekosongan data. " +
+    "Jika terdapat keterbatasan, sampaikan secara transparan dan jelaskan " +
+    "data tambahan apa yang diperlukan agar hasil lebih akurat."
+  );
+
+  return lines.join("\n");
+}
+
+
+/* =========================================
+   7. LIVE PREVIEW
+========================================= */
+
+function updatePrompt() {
+  const prompt = buildPrompt();
+
+  document.getElementById("promptOutput").value = prompt;
+
+  document.getElementById("previewName").textContent =
+    generators[activeGenerator].name;
+
+  document.getElementById("previewStatus").textContent =
+    "● LIVE PREVIEW";
+}
+
+
+/* =========================================
+   8. VALIDASI & GENERATE
+========================================= */
+
+function validateForm() {
+  const generator = generators[activeGenerator];
+
+  const missing = generator.fields.filter(field => {
+    return field.required && !getValue(field.id);
+  });
+
+  if(missing.length) {
+    showToast("Lengkapi kolom: " + missing[0].label);
+    const element = document.getElementById("field_"+missing[0].id);
+    element?.focus();
+    return false;
+  }
+
+  return true;
+}
+
+document.getElementById("generateBtn").addEventListener("click",() => {
+  if(!validateForm()) return;
+
+  updatePrompt();
+  showToast("Prompt berhasil dibuat!");
+});
+
+
+/* =========================================
+   9. RESET FORM
+========================================= */
+
+function clearCurrentForm() {
+  const generator = generators[activeGenerator];
+
+  generator.fields.forEach(field => {
+    const element = document.getElementById("field_"+field.id);
+    if(element) element.value = "";
+  });
+
+  const custom = document.getElementById("customConstraints");
+  if(custom) custom.value = "";
+
+  selectedTone = "Profesional";
+  selectedFormat = "Terstruktur dengan heading dan poin";
+
+  updateChoiceStyles();
+  updatePrompt();
+
+  showToast("Formulir berhasil dikosongkan.");
+}
+
+document.getElementById("clearForm").addEventListener("click",clearCurrentForm);
+
+document.getElementById("resetAll").addEventListener("click",() => {
+  if(!confirm("Reset seluruh isian formulir saat ini?")) return;
+  clearCurrentForm();
+});
+
+
+/* =========================================
+   10. COPY PROMPT
+========================================= */
+
+async function copyPrompt() {
+  const text = document.getElementById("promptOutput").value;
+
+  if(!text.trim()) {
+    showToast("Tidak ada prompt untuk disalin.");
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(text);
+    showToast("Prompt berhasil disalin!");
+  } catch(error) {
+    const textarea = document.getElementById("promptOutput");
+    textarea.focus();
+    textarea.select();
+
+    try {
+      const success = document.execCommand("copy");
+      showToast(success
+        ? "Prompt berhasil disalin!"
+        : "Silakan salin prompt secara manual."
+      );
+    } catch(e) {
+      showToast("Silakan salin prompt secara manual.");
+    }
+  }
+}
+
+document.getElementById("copyBtn").addEventListener("click",copyPrompt);
+
+
+/* =========================================
+   11. SIMPAN FAVORIT
+========================================= */
+
+function saveFavorite() {
+  const prompt = document.getElementById("promptOutput").value.trim();
+
+  if(!prompt) {
+    showToast("Tidak ada prompt untuk disimpan.");
+    return;
+  }
+
+  const title = promptTitle();
+
+  const favorite = {
+    id:Date.now().toString() + Math.random().toString(36).slice(2,7),
+    title:title,
+    generator:activeGenerator,
+    generatorName:generators[activeGenerator].name,
+    prompt:prompt,
+    createdAt:new Date().toISOString()
+  };
+
+  favorites.unshift(favorite);
+
+  saveFavoritesStorage();
+  renderFavorites();
+
+  showToast("Prompt berhasil disimpan ke favorit.");
+}
+
+function promptTitle() {
+  const generator = generators[activeGenerator];
+  const values = getAllValues();
+
+  return values.business
+    ? generator.name + " - " + values.business
+    : generator.name + " - " + new Date().toLocaleDateString("id-ID");
+}
+
+document.getElementById("saveBtn").addEventListener("click",saveFavorite);
+
+
+/* =========================================
+   12. RENDER FAVORIT
+========================================= */
+
+function renderFavorites() {
+  const container = document.getElementById("favoriteList");
+
+  document.getElementById("favoriteCount").textContent =
+    favorites.length;
+
+  if(!favorites.length) {
+    container.innerHTML = `
+      <div class="empty-state" style="grid-column:1/-1">
+        ♡ Belum ada prompt favorit.<br>
+        Buat prompt lalu klik "Simpan Favorit".
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = favorites.map(item => `
+    <div class="favorite-card">
+      <strong>${escapeHTML(item.title)}</strong>
+      <small>
+        ${escapeHTML(item.generatorName || "Generator")}
+        ·
+        ${item.createdAt
+          ? new Date(item.createdAt).toLocaleDateString("id-ID")
+          : ""}
+      </small>
+
+      <div class="favorite-actions">
+        <button data-open="${escapeHTML(item.id)}">
+          Buka
+        </button>
+
+        <button data-copy="${escapeHTML(item.id)}">
+          Salin
+        </button>
+
+        <button class="delete" data-delete="${escapeHTML(item.id)}">
+          Hapus
+        </button>
+      </div>
+    </div>
+  `).join("");
+
+  container.querySelectorAll("[data-open]").forEach(button => {
+    button.addEventListener("click",() => {
+      openFavorite(button.dataset.open);
+    });
+  });
+
+  container.querySelectorAll("[data-copy]").forEach(button => {
+    button.addEventListener("click",() => {
+      copyFavorite(button.dataset.copy);
+    });
+  });
+
+  container.querySelectorAll("[data-delete]").forEach(button => {
+    button.addEventListener("click",() => {
+      deleteFavorite(button.dataset.delete);
+    });
+  });
+}
+
+function openFavorite(id) {
+  const item = favorites.find(f => f.id === id);
+
+  if(!item) return;
+
+  if(generators[item.generator]) {
+    activeGenerator = item.generator;
+    renderMenu();
+    renderForm();
+  }
+
+  document.getElementById("promptOutput").value = item.prompt;
+  document.getElementById("previewName").textContent =
+    item.title;
+
+  document.getElementById("previewStatus").textContent =
+    "● FAVORIT DIBUKA";
+
+  showToast("Prompt favorit berhasil dibuka.");
+}
+
+async function copyFavorite(id) {
+  const item = favorites.find(f => f.id === id);
+  if(!item) return;
+
+  try {
+    await navigator.clipboard.writeText(item.prompt);
+    showToast("Prompt favorit berhasil disalin.");
+  } catch(e) {
+    const textarea = document.getElementById("promptOutput");
+    textarea.value = item.prompt;
+    textarea.focus();
+    textarea.select();
+
+    showToast("Prompt dimuat. Silakan salin secara manual.");
+  }
+}
+
+function deleteFavorite(id) {
+  const item = favorites.find(f => f.id === id);
+  if(!item) return;
+
+  if(!confirm("Hapus prompt favorit ini?")) return;
+
+  favorites = favorites.filter(f => f.id !== id);
+
+  saveFavoritesStorage();
+  renderFavorites();
+
+  showToast("Prompt favorit dihapus.");
+}
+
+
+/* =========================================
+   13. EXPORT FAVORIT KE JSON
+========================================= */
+
+function exportFavorites() {
+  if(!favorites.length) {
+    showToast("Belum ada koleksi untuk diekspor.");
+    return;
+  }
+
+  const data = {
+    app:"Lentera Digital Starter AI Workspace",
+    version:1,
+    exportedAt:new Date().toISOString(),
+    favorites:favorites
+  };
+
+  const blob = new Blob(
+    [JSON.stringify(data,null,2)],
+    {type:"application/json"}
+  );
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+
+  link.href = url;
+  link.download = "lentera-prompt-favorites.json";
+  link.click();
+
+  URL.revokeObjectURL(url);
+
+  showToast("Koleksi berhasil diekspor.");
+}
+
+document.getElementById("exportBtn").addEventListener(
+  "click",exportFavorites
+);
+
+
+/* =========================================
+   14. IMPORT FAVORIT DARI JSON
+========================================= */
+
+document.getElementById("importBtn").addEventListener("click",() => {
+  document.getElementById("importFile").click();
+});
+
+document.getElementById("importFile").addEventListener("change",async event => {
+  const file = event.target.files[0];
+
+  if(!file) return;
+
+  try {
+    const content = await file.text();
+    const data = JSON.parse(content);
+
+    const imported = Array.isArray(data)
+      ? data
+      : data.favorites;
+
+    if(!Array.isArray(imported)) {
+      throw new Error("Format file tidak valid.");
+    }
+
+    const validItems = imported.filter(item =>
+      item &&
+      typeof item.prompt === "string" &&
+      typeof item.title === "string"
+    );
+
+    if(!validItems.length) {
+      throw new Error("Tidak ada prompt valid dalam file.");
+    }
+
+    let added = 0;
+
+    validItems.forEach(item => {
+      const duplicate = favorites.some(existing =>
+        existing.prompt === item.prompt &&
+        existing.title === item.title
+      );
+
+      if(!duplicate) {
+        favorites.push({
+          id:Date.now().toString() +
+             Math.random().toString(36).slice(2,9),
+          title:item.title,
+          generator:generators[item.generator]
+            ? item.generator
+            : "market",
+          generatorName:item.generatorName || "Generator",
+          prompt:item.prompt,
+          createdAt:item.createdAt || new Date().toISOString()
+        });
+
+        added++;
+      }
+    });
+
+    saveFavoritesStorage();
+    renderFavorites();
+
+    showToast(added + " prompt berhasil diimpor.");
+
+  } catch(error) {
+    showToast(error.message || "File tidak dapat diimpor.");
+  }
+
+  event.target.value = "";
+});
+
+
+/* =========================================
+   15. DARK / LIGHT MODE
+========================================= */
+
+function setTheme(theme) {
+  document.body.classList.toggle("light",theme === "light");
+
+  try {
+    localStorage.setItem(THEME_KEY,theme);
+  } catch(e) {}
+}
+
+document.getElementById("themeToggle").addEventListener("click",() => {
+  const light = document.body.classList.contains("light");
+  setTheme(light ? "dark":"light");
+});
+
+
+/* =========================================
+   16. INISIALISASI
+========================================= */
+
+try {
+  const savedTheme = localStorage.getItem(THEME_KEY);
+  if(savedTheme) setTheme(savedTheme);
+} catch(e) {}
+
+renderMenu();
+renderForm();
+renderFavorites();
+updatePrompt();
+
+</script>
+
+</body>
+</html>
